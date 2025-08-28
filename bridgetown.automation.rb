@@ -49,3 +49,9 @@
 # end
 #
 # Read the Automations documentation: https://www.bridgetownrb.com/docs/automations
+
+append_to_file "config/boot.rb" do
+  <<~RUBY
+require 'bridgetown_writebook/commands'
+  RUBY
+end
