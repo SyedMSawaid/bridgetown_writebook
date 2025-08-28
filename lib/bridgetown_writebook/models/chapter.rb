@@ -52,8 +52,8 @@ module BridgetownWritebook
         resource.content = <<~HTML
           #{html resource.content}
           <div data-controller="reading"
-               data-reading-id-value="#{text id}"
-               data-reading-book-value="#{text book.id}">
+               data-reading-id-value="#{id}"
+               data-reading-book-value="#{book.id}">
           </div>
         HTML
       end

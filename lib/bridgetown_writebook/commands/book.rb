@@ -6,6 +6,13 @@ require_relative "chapter"
 module BridgetownWritebook
   module Commands
     class Book < Thor
+      include Bridgetown::Commands::ConfigurationOverridable
+
+      Bridgetown::Commands::Registrations.register do
+        desc "book <command>", "Take me to the book"
+        subcommand "book", Book
+      end
+
       desc "setup", "Setup folders and files for books"
       def setup
         create_books_folder

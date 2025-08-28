@@ -2,7 +2,7 @@
 
 require "bridgetown"
 require "bridgetown_writebook/builder"
-require_relative "bridgetown_writebook/commands"
+require_relative "bridgetown_writebook/commands/book"
 
 # @param config [Bridgetown::Configuration::ConfigurationDSL]
 Bridgetown.initializer :bridgetown_writebook do |config|

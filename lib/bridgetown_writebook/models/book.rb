@@ -64,8 +64,8 @@ module BridgetownWritebook
 
       def content
         <<~HTML
-          <ul class="pl-0" data-controller="bookmark" data-bookmark-chapter-outlet='.chapter' data-bookmark-book-value="#{text id}">
-           #{html chapters.map do |chapter|
+          <ul class="pl-0" data-controller="bookmark" data-bookmark-chapter-outlet='.chapter' data-bookmark-book-value="#{id}">
+           #{chapters.map do |chapter|
              li chapter
            end.join }
           </ul>
@@ -78,12 +78,12 @@ module BridgetownWritebook
         <<~HTML
           <li class='chapter flex justify-between items-end gap-4'
               data-controller='chapter'
-              data-chapter-id-value='#{text chapter.id}'
+              data-chapter-id-value='#{chapter.id}'
               data-chapter-ellipsis-class="text-orange-500"
           >
-            <a href='#{text chapter.link}' class="text-nowrap">#{text chapter.title}</a>
+            <a href='#{chapter.link}' class="text-nowrap">#{chapter.title}</a>
             <span class="grow overflow-hidden border-b border-dotted border-black mb-1.5" data-chapter-target="ellipsis"></span>
-            <span class="text-nowrap">#{text chapter.word_count}</span>
+            <span class="text-nowrap">#{chapter.word_count}</span>
           </li>
         HTML
       end
