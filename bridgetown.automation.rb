@@ -50,8 +50,19 @@
 #
 # Read the Automations documentation: https://www.bridgetownrb.com/docs/automations
 
-append_to_file "config/boot.rb" do
-  <<~RUBY
-require 'bridgetown_writebook/commands'
-  RUBY
+if File.exist?("config/boot.rb")
+  append_to_file "config/boot.rb" do
+    <<~RUBY
+
+      require "bridgetown_writebook/commands"
+    RUBY
+  end
+else
+  create_file "config/boot.rb" do
+    <<~RUBY
+      # frozen_string_literal: true
+
+      require "bridgetown_writebook/commands"
+    RUBY
+  end
 end
