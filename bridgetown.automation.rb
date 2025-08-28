@@ -66,3 +66,11 @@ else
     RUBY
   end
 end
+
+create_file "config/boot.rb" do
+  <<~RUBY
+      # frozen_string_literal: true
+
+      require "bridgetown_writebook/commands"
+    RUBY
+end
