@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_all "bridgetown-core/commands/concerns"
-require "commands/book"
+require_relative "commands/book"
 
 module BridgetownWritebook
   class Commands
