@@ -35,7 +35,7 @@ module BridgetownWritebook
         file_path = File.join(folder_path, "00-meta.md")
         content = <<~MARKDOWN
           ---
-          title: #{text title}
+          title: #{title}
           subtitle:
           authors: [  ]
           ---

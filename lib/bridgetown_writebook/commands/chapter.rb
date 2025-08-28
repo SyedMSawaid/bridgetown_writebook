@@ -20,7 +20,7 @@ module BridgetownWritebook
 
         content = <<~MARKDOWN
           ---
-          title: #{text chapter_title}
+          title: #{chapter_title}
           ---
         MARKDOWN
 
