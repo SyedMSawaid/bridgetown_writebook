@@ -43,7 +43,7 @@ module BridgetownWritebook
       end
 
       def generate
-        resource.data.layout = "chapter"
+        resource.data.layout = "bridgetown_writebook/chapter"
         resource.data.book_title = book.name
         resource.data.book_link = book.link
         resource.data.next_chapter_title = next_chapter&.title

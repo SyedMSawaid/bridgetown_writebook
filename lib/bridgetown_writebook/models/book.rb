@@ -54,7 +54,7 @@ module BridgetownWritebook
       end
 
       def generate
-        resource.data.layout = :book
+        resource.data.layout = "bridgetown_writebook/book"
         resource.data.title = title
         resource.data.cover = cover
         resource.data.subtitle = subtitle
