@@ -49,13 +49,7 @@ module BridgetownWritebook
         resource.data.next_chapter_title = next_chapter&.title
         resource.data.next_chapter_link = next_chapter&.link
         resource.data.word_count = word_count
-        resource.content = <<~HTML
-          #{html resource.content}
-          <div data-controller="reading"
-               data-reading-id-value="#{id}"
-               data-reading-book-value="#{book.id}">
-          </div>
-        HTML
+        resource.content = BridgetownWritebook::ChapterContent.new(chapter: self).template
       end
     end
   end

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "chapter"
+
 module BridgetownWritebook
   module Models
     class Book
@@ -14,7 +16,7 @@ module BridgetownWritebook
         @chapters = []
 
         chapters.each do |chapter|
-          @chapters << Chapter.new(chapter, booxk: self)
+          @chapters << Chapter.new(chapter, book: self)
         end
 
         extract_metadata
@@ -57,35 +59,9 @@ module BridgetownWritebook
         resource.data.cover = cover
         resource.data.subtitle = subtitle
         resource.data.authors = authors
-        resource.content = content
+        resource.content = BridgetownWritebook::BookContent.new(book: self).template
 
         chapters.each(&:generate)
-      end
-
-      def content
-        <<~HTML
-          <ul class="pl-0" data-controller="bookmark" data-bookmark-chapter-outlet='.chapter' data-bookmark-book-value="#{id}">
-           #{chapters.map do |chapter|
-             li chapter
-           end.join }
-          </ul>
-        HTML
-      end
-
-      # TODO: may be convert these into compenents or partials.
-      # TODO: Move them to the template, add it to the metadata and move it to the template.
-      def li(chapter)
-        <<~HTML
-          <li class='chapter flex justify-between items-end gap-4'
-              data-controller='chapter'
-              data-chapter-id-value='#{chapter.id}'
-              data-chapter-ellipsis-class="text-orange-500"
-          >
-            <a href='#{chapter.link}' class="text-nowrap">#{chapter.title}</a>
-            <span class="grow overflow-hidden border-b border-dotted border-black mb-1.5" data-chapter-target="ellipsis"></span>
-            <span class="text-nowrap">#{chapter.word_count}</span>
-          </li>
-        HTML
       end
     end
   end
