@@ -9,13 +9,13 @@ module BridgetownWritebook
     def template
       chapters_json = book.chapter_ids.to_json.gsub('"', "&quot;")
       <<~HTML
-        <li data-controller="book" data-book-id-value="#{book.id}" data-book-chapters-value="#{chapters_json}" >
-          <a class="flex flex-col gap-2 max-w-[236px]" href="#{book.link}">
-            <div class="max-h-[378px] border rounded relative box-border" data-book-target="cover">
-              <img src="#{book.cover}" class="max-h-[378px] max-w-[236px] rounded">
+        <li class="book-cover-item" data-controller="book" data-book-id-value="#{book.id}" data-book-chapters-value="#{chapters_json}" >
+          <a class="book-cover-link" href="#{book.link}">
+            <div class="book-cover-image-wrapper" data-book-target="cover">
+              <img src="#{book.cover}" class="book-cover-image">
             </div>
-            <div class="text-center">#{book.name}</div>
-            <div class="text-sm text-center">#{book.authors}</div>
+            <div class="book-cover-title">#{book.name}</div>
+            <div class="book-cover-authors">#{book.authors}</div>
           </a>
         </li>
       HTML

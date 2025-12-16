@@ -1,24 +1,21 @@
 ---
 layout: default
 ---
-
-<div class="flex justify-center gap-2">
+<div class="breadcrumb-nav">
   <a href="/books">Books</a>
   <span>▸</span>
   <strong>{{ page.title }}</strong>
 </div>
 
-
-<div class="flex flex-col md:flex-row gap-4 md:gap-8">
-  <div class="md:w-1/4 py-10 px-2 md:sticky md:top-0 md:self-start">
-    <img src="{{ page.data.cover }}" alt="{{ page.title }}" class="object-fit rounded" />
+<div class="book-layout-container">
+  <div class="book-sidebar">
+    <img src="{{ page.data.cover }}" alt="{{ page.title }}" class="book-sidebar-image">
   </div>
 
-  <div class="md:w-3/4 md:py-10 px-2">
-    <h1 class="text-6xl font-bold">{{ page.title }}</h1>
+  <div class="book-main-content">
+    <h1 class="book-title">{{ page.title }}</h1>
     <div>{{ page.data.subtitle }}</div>
     <div>{{ page.data.authors }}</div>
-
 
     {{ content }}
   </div>
