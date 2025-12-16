@@ -16,13 +16,17 @@ module BridgetownWritebook
           return
         end
 
-        chapter_file = File.join(@folder_path, "#{new_chapter_number}-#{chapter_title.parameterize}.md")
+        chapter_file = File.join(
+          @folder_path, "#{new_chapter_number}-#{chapter_title.parameterize}.md"
+        )
 
+        # rubocop:disable Bridgetown/InsecureHeredoc
         content = <<~MARKDOWN
           ---
           title: #{chapter_title}
           ---
         MARKDOWN
+        # rubocop:enable Bridgetown/InsecureHeredoc
 
         File.write(chapter_file, content)
         Bridgetown.logger.info "Chapter created: #{chapter_file}"

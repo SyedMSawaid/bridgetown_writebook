@@ -42,7 +42,7 @@ module BridgetownWritebook
         book.chapters[book.chapters.index(self) + 1]
       end
 
-      def generate
+      def generate # rubocop:disable Metrics/AbcSize
         resource.data.layout = "bridgetown_writebook/chapter"
         resource.data.book_title = book.name
         resource.data.book_link = book.link

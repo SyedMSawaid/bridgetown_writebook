@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module BridgetownWritebook
   class BookList < Bridgetown::Component
     def initialize(books:)
+      super
       @books = books
     end
 
@@ -9,11 +12,11 @@ module BridgetownWritebook
     end
 
     def template
-      <<~HTML
-        <ul class="book-list">
-            #{book_covers}
-        </ul>
-      HTML
+      html do
+        ul class: "book-list" do
+          text_node book_covers
+        end
+      end
     end
   end
 end

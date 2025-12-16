@@ -1,18 +1,23 @@
+# frozen_string_literal: true
+
 module BridgetownWritebook
   class BookContent < Bridgetown::Component
     def initialize(book:)
+      super
       @book = book
     end
 
     def template
-      <<~HTML
-        <ul class="book-content-list"
-            data-controller="bookmark"
-            data-bookmark-chapter-outlet='.chapter'
-            data-bookmark-book-value="#{@book.id}">
-         #{chapters_list}
-        </ul>
-      HTML
+      html do
+        ul class: "book-content-list",
+           data: {
+             controller: "bookmark",
+             bookmark_chapter_outlet: ".chapter",
+             bookmark_book_value: @book.id,
+           } do
+          text_node chapters_list.join
+        end
+      end
     end
 
     def chapters_list

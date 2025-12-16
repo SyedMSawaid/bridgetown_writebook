@@ -35,7 +35,7 @@ module BridgetownWritebook
         "by #{@authors.join(", ")}" if authors?
       end
 
-      def extract_metadata
+      def extract_metadata # rubocop:disable Metrics/CyclomaticComplexity
         @name = @meta&.data&.title || slug.titleize
         @subtitle = @meta&.data&.subtitle
         @authors = @meta&.data&.authors
@@ -53,7 +53,7 @@ module BridgetownWritebook
         chapters.map(&:id)
       end
 
-      def generate
+      def generate # rubocop:disable Metrics/AbcSize
         resource.data.layout = "bridgetown_writebook/book"
         resource.data.title = title
         resource.data.cover = cover

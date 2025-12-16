@@ -33,6 +33,7 @@ module BridgetownWritebook
         end
 
         file_path = File.join(folder_path, "00-meta.md")
+        # rubocop:disable Bridgetown/InsecureHeredoc
         content = <<~MARKDOWN
           ---
           title: #{title}
@@ -40,6 +41,7 @@ module BridgetownWritebook
           authors: [  ]
           ---
         MARKDOWN
+        # rubocop:enable Bridgetown/InsecureHeredoc
 
         File.write(file_path, content)
         Bridgetown.logger.info "Creating a new book with title: #{title}"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "active_support/core_ext/numeric/conversions"
 require_relative "models/book"
 require_relative "models/chapter"
@@ -28,8 +30,7 @@ module BridgetownWritebook
       end
     end
 
-
-    def create_book_objects
+    def create_book_objects # rubocop:disable Metrics/AbcSize
       site.collections.books.resources
         .group_by { |b| b.id.split("_books/").last.split("/").first }
         .each do |book_id, chapters|
@@ -37,7 +38,9 @@ module BridgetownWritebook
         regular_chapters = chapters.reject { |c| c.relative_path.to_s.end_with?("00-meta.md") }
 
         resource = add_resource(:book, "books/#{book_id}.md") { permalink "/books/:slug/" }
-        @books << BridgetownWritebook::Models::Book.new(resource, chapters: regular_chapters, meta: meta_file)
+        @books << BridgetownWritebook::Models::Book.new(
+          resource, chapters: regular_chapters, meta: meta_file
+        )
       end
     end
 
