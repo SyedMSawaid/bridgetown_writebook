@@ -1,13 +1,13 @@
 {
   "name": "bridgetown_writebook",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "frontend/javascript/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/syedmsawaid/bridgetown_writebook.git"
   },
   "author": "Syed Muhammad Sawaid <smsawaid3@gmail.com>",
-  "homepage": "https://www.bridgetownrb.com",
+  "homepage": "https://github.com/syedmsawaid/bridgetown_writebook",
   "license": "MIT",
   "private": false,
   "files": [
