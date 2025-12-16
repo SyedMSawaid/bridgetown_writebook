@@ -6,9 +6,9 @@ module BridgetownWritebook
 
     def template
       <<~HTML
-        <ul class="pl-0"
+        <ul class="book-content-list"
             data-controller="bookmark"
-            data-bookmark-chapter-outlet='.chapter' 
+            data-bookmark-chapter-outlet='.chapter'
             data-bookmark-book-value="#{@book.id}">
          #{chapters_list}
         </ul>

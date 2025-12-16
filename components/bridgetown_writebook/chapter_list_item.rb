@@ -8,14 +8,14 @@ module BridgetownWritebook
 
     def template
       <<~HTML
-        <li class='chapter flex justify-between items-end gap-4'
+        <li class='chapter'
             data-controller='chapter'
             data-chapter-id-value='#{chapter.id}'
-            data-chapter-ellipsis-class="text-orange-500"
+            data-chapter-ellipsis-class="chapter-highlight"
         >
-          <a href='#{chapter.link}' class="text-nowrap">#{chapter.title}</a>
-          <span class="grow overflow-hidden border-b border-dotted border-black mb-1.5" data-chapter-target="ellipsis"></span>
-          <span class="text-nowrap">#{chapter.word_count}</span>
+          <a href='#{chapter.link}' class="chapter-link">#{chapter.title}</a>
+          <span class="chapter-ellipsis" data-chapter-target="ellipsis"></span>
+          <span class="chapter-word-count">#{chapter.word_count}</span>
         </li>
       HTML
     end

@@ -10,7 +10,7 @@ module BridgetownWritebook
 
     def template
       <<~HTML
-        <ul class="list-none flex justify-center sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-6 py-10 px-0 flex-wrap">
+        <ul class="book-list">
             #{book_covers}
         </ul>
       HTML
