@@ -65,3 +65,36 @@ where friendly folks are standing by to help you build and release your plugin o
 
 **NOTE:** make sure you add the `bridgetown-plugin` [topic](https://github.com/topics/bridgetown-plugin) to your
 plugin's GitHub repo so the plugin or theme will show up on [Bridgetown's official Plugin Directory](https://www.bridgetownrb.com/plugins)! (There may be a day or so delay before you see it appear.)
+
+## Available Tasks
+
+### Book Commands
+
+#### `bridgetown book setup`
+Sets up the books infrastructure for your site by creating the necessary folders and adding the books collection to your Bridgetown configuration.
+
+#### `bridgetown book new`
+Creates a new book with the specified title. The book is created as a folder structure under `src/_books/` with an initial metadata file (`00-meta.md`).
+
+**Options:**
+- `--title` (required): The title of the book to create
+
+**Example:**
+```shell
+bridgetown book new --title "My Awesome Book"
+```
+
+### Chapter Commands
+
+#### `bridgetown book chapters add`
+Adds a new chapter to an existing book. Chapters are automatically numbered sequentially and created within the book's folder.
+
+**Options:**
+- `--book` (required): The title of the book to which the chapter will be added
+- `--title` (required): The title of the chapter to create
+
+**Example:**
+```shell
+bridgetown book chapters add --book "My Awesome Book" --title "Introduction"
+```
+
