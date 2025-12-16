@@ -5,10 +5,10 @@ require_relative "lib/bridgetown_writebook/version"
 Gem::Specification.new do |spec|
   spec.name          = "bridgetown_writebook"
   spec.version       = BridgetownWritebook::VERSION
-  spec.author        = "Bridgetown Team"
-  spec.email         = "maintainers@bridgetownrb.com"
-  spec.summary       = "Sample code for creating new Bridgetown plugins"
-  spec.homepage      = "https://github.com/username/bridgetown_writebook"
+  spec.author        = "Syed Muhammad Sawaid"
+  spec.email         = "smsawaid3@gmail.com"
+  spec.summary       = "WriteBook style books for your static website"
+  spec.homepage      = "https://github.com/syedmsawaid/bridgetown_writebook"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r!^(test|script|spec|features|frontend)/!) }
