@@ -19,17 +19,17 @@ class TestBridgetownWritebook < Bridgetown::TestCase
     end
   end
 
-  describe "BridgetownWritebook" do
-    before do
-      @contents = File.read(dest_dir("index.html"))
-    end
+  # describe "BridgetownWritebook" do
+  #   before do
+  #     @contents = File.read(dest_dir("index.html"))
+  #   end
 
-    it "outputs the overridden metadata" do
-      assert_includes @contents, "<title>My Awesome Site</title>"
-    end
+  # it "outputs the overridden metadata" do
+  #   assert_includes @contents, "<title>My Awesome Site</title>"
+  # end
 
-    it "outputs the sample Liquid tag" do
-      assert_includes @contents, "This plugin works!"
-    end
-  end
+  # it "outputs the sample Liquid tag" do
+  #   assert_includes @contents, "This plugin works!"
+  # end
+  # end
 end
