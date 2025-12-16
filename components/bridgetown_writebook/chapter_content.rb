@@ -3,19 +3,18 @@
 module BridgetownWritebook
   class ChapterContent < Bridgetown::Component
     def initialize(chapter:)
-      super
+      super()
       @chapter = chapter
     end
 
     def template
-      html do
-        text_node @chapter.resource.content
-        div data: {
-          controller: "reading",
-          reading_id_value: @chapter.id,
-          reading_book_value: @chapter.book.id,
-        }
-      end
+      data_attrs = [
+        'data-controller="reading"',
+        "data-reading-id-value=\"#{@chapter.id}\"",
+        "data-reading-book-value=\"#{@chapter.book.id}\"",
+      ].join(" ")
+
+      "#{@chapter.resource.content}<div #{data_attrs}></div>"
     end
   end
 end

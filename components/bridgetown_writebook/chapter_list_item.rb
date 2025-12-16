@@ -5,27 +5,22 @@ module BridgetownWritebook
     attr_accessor :chapter
 
     def initialize(chapter:)
-      super
+      super()
       @chapter = chapter
     end
 
     def template
-      html do
-        li class: "chapter",
-           data: {
-             controller: "chapter",
-             chapter_id_value: chapter.id,
-             chapter_ellipsis_class: "chapter-highlight",
-           } do
-          a class: "chapter-link", href: chapter.link do
-            text_node chapter.title
-          end
-          span class: "chapter-ellipsis", data: { chapter_target: "ellipsis" }
-          span class: "chapter-word-count" do
-            text_node chapter.word_count
-          end
-        end
-      end
+      data_attrs = [
+        'data-controller="chapter"',
+        "data-chapter-id-value=\"#{chapter.id}\"",
+        'data-chapter-ellipsis-class="chapter-highlight"',
+      ].join(" ")
+
+      link = "<a class=\"chapter-link\" href=\"#{chapter.link}\">#{chapter.title}</a>"
+      ellipsis = '<span class="chapter-ellipsis" data-chapter-target="ellipsis"></span>'
+      word_count = "<span class=\"chapter-word-count\">#{chapter.word_count}</span>"
+
+      "<li class=\"chapter\" #{data_attrs}>#{link}#{ellipsis}#{word_count}</li>"
     end
   end
 end

@@ -3,7 +3,7 @@
 module BridgetownWritebook
   class BookList < Bridgetown::Component
     def initialize(books:)
-      super
+      super()
       @books = books
     end
 
@@ -12,11 +12,7 @@ module BridgetownWritebook
     end
 
     def template
-      html do
-        ul class: "book-list" do
-          text_node book_covers
-        end
-      end
+      "<ul class=\"book-list\">#{book_covers}</ul>"
     end
   end
 end
