@@ -1,54 +1,52 @@
-# Sample plugin for Bridgetown
+# Bridgetown Writebook
 
-_NOTE: This isn't a real plugin! Copy this sample code and use it to create your own Ruby gem! [Help guide here…](https://www.bridgetownrb.com/docs/plugins)_ 😃
-
-_You can run_ `bridgetown plugins new` _to easily set up a customized version of this starter repo._
-
-A Bridgetown plugin to [fill in the blank]…
+A Bridgetown plugin to add [WriteBook](https://once.com/writebook) style books to your static website.
 
 ## Installation
 
 Run this command to add this plugin to your site's Gemfile:
 
 ```shell
-bundle add my_awesome_plugin
-```
-
-Then add the initializer to your configuration in `config/initializers.rb`:
-
-```ruby
-init :my_awesome_plugin
-```
-
-Or if there's a `bridgetown.automation.rb` automation script, you can run that instead for guided setup:
-
-```shell
-bin/bridgetown apply https://github.com/username/my_awesome_plugin
+bundle add bridgetown_writebook
 ```
 
 ## Usage
 
-The plugin will…
+After installation, the plugin provides a complete book management system for your Bridgetown site. Books are organized as collections, with each book containing multiple chapters.
 
-### Optional configuration options
+### Creating Your First Book
 
-The plugin will automatically use any of the following metadata variables if they are present in your site's `_data/site_metadata.yml` file.
+1. **Set up the books infrastructure** (one-time setup):
+   ```shell
+   bridgetown book setup
+   ```
+   This creates the necessary folder structure and adds the books collection to your Bridgetown configuration.
 
-…
+2. **Create a new book**:
+   ```shell
+   bridgetown book new --title "My Awesome Book"
+   ```
+   This creates a folder under `src/_books/` with an initial metadata file.
 
-## Testing
+3. **Add chapters to your book**:
+   ```shell
+   bridgetown book chapters add --book "My Awesome Book" --title "Introduction"
+   ```
+   Chapters are automatically numbered and added to your book's folder.
 
-* Run `bundle exec rake test` to run the test suite
-* Or run `script/cibuild` to validate with Rubocop and Minitest together.
+### Book Structure
 
-## Contributing
+Each book consists of:
+- A metadata file (`00-meta.md`) containing title, subtitle, and authors
+- Numbered chapter files (e.g., `01-introduction.md`, `02-getting-started.md`)
+- An optional cover image (`cover.png` in the book's folder)
 
-1. Fork it (https://github.com/username/my-awesome-plugin/fork)
-2. Clone the fork using `git clone` to your local development machine.
-3. Create your feature branch (`git checkout -b my-new-feature`)
-4. Commit your changes (`git commit -am 'Add some feature'`)
-5. Push to the branch (`git push origin my-new-feature`)
-6. Create a new Pull Request
+### Accessing Your Books
+
+The plugin automatically generates:
+- A books index page at `/books/` listing all your books
+- Individual book pages at `/books/[book-slug]/` showing chapters
+- Chapter pages with navigation between previous/next chapters
 
 ----
 
@@ -65,36 +63,3 @@ where friendly folks are standing by to help you build and release your plugin o
 
 **NOTE:** make sure you add the `bridgetown-plugin` [topic](https://github.com/topics/bridgetown-plugin) to your
 plugin's GitHub repo so the plugin or theme will show up on [Bridgetown's official Plugin Directory](https://www.bridgetownrb.com/plugins)! (There may be a day or so delay before you see it appear.)
-
-## Available Tasks
-
-### Book Commands
-
-#### `bridgetown book setup`
-Sets up the books infrastructure for your site by creating the necessary folders and adding the books collection to your Bridgetown configuration.
-
-#### `bridgetown book new`
-Creates a new book with the specified title. The book is created as a folder structure under `src/_books/` with an initial metadata file (`00-meta.md`).
-
-**Options:**
-- `--title` (required): The title of the book to create
-
-**Example:**
-```shell
-bridgetown book new --title "My Awesome Book"
-```
-
-### Chapter Commands
-
-#### `bridgetown book chapters add`
-Adds a new chapter to an existing book. Chapters are automatically numbered sequentially and created within the book's folder.
-
-**Options:**
-- `--book` (required): The title of the book to which the chapter will be added
-- `--title` (required): The title of the chapter to create
-
-**Example:**
-```shell
-bridgetown book chapters add --book "My Awesome Book" --title "Introduction"
-```
-
